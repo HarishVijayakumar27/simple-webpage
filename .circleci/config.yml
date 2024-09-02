@@ -14,7 +14,6 @@ jobs:
       - run:
           name: Start HTTP Server
           command: |
-            cd ./simple-webpage
             python3 -m http.server 8080
 
 workflows:
