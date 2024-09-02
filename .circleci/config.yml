@@ -1,0 +1,25 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.8  # Use a base image with basic tools
+    steps:
+      - checkout
+      - run:
+          name: Install HTTP Server
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y python3
+      - run:
+          name: Start HTTP Server
+          command: |
+            cd ./simple-webpage
+            python3 -m http.server 8080
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+
